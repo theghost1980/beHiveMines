@@ -53,6 +53,7 @@ app.get('/api/test', (request, response) => {
 const PORT = 3001;
 app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`);
+    console.log('Backend Server for Hive Mines RPG v1.0');
 });
 
 //TODO: replace this with the DB readings from mongoDB.
