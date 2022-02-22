@@ -1,0 +1,25 @@
+{
+  "name": "hive_mines_backend",
+  "version": "1.0.0",
+  "description": "backend server to handle hive_mines game, made on nodejs and express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hive",
+    "blockchain",
+    "hive",
+    "mines",
+    "godot",
+    "engine",
+    "nodejs",
+    "express",
+    "server"
+  ],
+  "author": "@theghost1980 - Saturno Mangieri",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
