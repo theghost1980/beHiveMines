@@ -9,7 +9,7 @@ router.use(bodyParser.json());
 //end config
 
 router.get('/status', function(req, res){
-    res.send('Server: OK');
+    res.status(200).send({ "status": "OK"});
 });
 
 router.post('/login', function(req,res){
@@ -46,7 +46,7 @@ router.post('/create_user', function(req,res){
                 });
                 res.status(200).send({ new_user: true, result: resultNew });
             }else{
-                res.status(200).send({ new_user: false, result: result });
+                res.status(200).send({ new_user: false, result: 'User already exists. Please choose a different username.' });
             }
         });
     }
