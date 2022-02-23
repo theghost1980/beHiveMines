@@ -17,10 +17,10 @@ router.post('/login', function(req,res){
     const { username, password } = req.body;
     user.findOne({ username: username, password: password}, function(err, result){
         if (err){
-            res.status(500).send({ auth: false, error: err });
+            res.status(500).json({ auth: false, error: err });
         };
         if (!result){
-            res.status(404).send({ auth: false, result: result });
+            res.status(404).json({ auth: false, result: result });
         }else{
             res.status(200).json({ auth: true, result: result });
         }
@@ -31,22 +31,22 @@ router.post('/create_user', function(req,res){
     const { username, password, email} = req.body;
     console.log(req.body);
     if (username == null || password == null || username == "" || password == ""){
-        res.status(403).send({ auth: false, error: 'Please provide username and password.'});
+        res.status(403).json({ auth: false, error: 'Please provide username and password.'});
     }else{
         user.findOne({ username: username, password: password}, function(err, result){
             if (err){
-                res.status(500).send({ new_user: false, error: err });
+                res.status(500).json({ new_user: false, error: err });
             };
             if (!result){//create the user
                 //TODO verify if valid email but from website & game, the user will enter only 'email'@''.com. 
                 user.create({ username: username, password: password, email: email, created_at: new Date() }, function(err, resultNew){
                     if (err){
-                        res.status(500).send({ new_user: false, error: err });
+                        res.status(500).json({ new_user: false, error: err });
                     };
                 });
-                res.status(200).send({ new_user: true, result: resultNew });
+                res.status(200).json({ new_user: true, result: resultNew });
             }else{
-                res.status(200).send({ new_user: false, result: 'User already exists. Please choose a different username.' });
+                res.status(200).json({ new_user: false, result: 'User already exists. Please choose a different username.' });
             }
         });
     }
