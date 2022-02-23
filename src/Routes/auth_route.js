@@ -39,12 +39,12 @@ router.post('/create_user', function(req,res){
             };
             if (!result){//create the user
                 //TODO verify if valid email but from website & game, the user will enter only 'email'@''.com. 
-                user.create({ username: username, password: password, email: email, created_at: new Date() }, function(err, result){
+                user.create({ username: username, password: password, email: email, created_at: new Date() }, function(err, resultNew){
                     if (err){
                         res.status(500).send({ new_user: false, error: err });
                     };
                 });
-                res.status(200).send({ new_user: true, result: result });
+                res.status(200).send({ new_user: true, result: resultNew });
             }else{
                 res.status(200).send({ new_user: false, result: result });
             }
