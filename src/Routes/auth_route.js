@@ -22,7 +22,7 @@ router.post('/login', function(req,res){
         if (!result){
             res.status(404).send({ auth: false, result: result });
         }else{
-            res.status(200).send({ auth: true, result: result });
+            res.status(200).json({ auth: true, result: result });
         }
     });
 });
