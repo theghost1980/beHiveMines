@@ -27,4 +27,27 @@ router.post('/login', function(req,res){
     });
 });
 
+router.post('/create_user', function(req,res){
+    const { username, password, email} = req.body;
+    if (username == null || password == null || username == "" || password == ""){
+        res.status(403).send({ auth: false, error: 'Please provide username and password.'});
+    }else{
+        user.findOne({ username: username, password: password}, function(err, result){
+            if (err){
+                res.status(500).send({ new_user: false, error: err });
+            };
+            if (!result){//create the user
+                user.create({ username: username, password: password, email: email, created_at: new Date() }, function(err, result){
+                    if (err){
+                        res.status(500).send({ new_user: false, error: err });
+                    };
+                });
+                res.status(200).send({ new_user: true, result: result });
+            }else{
+                res.status(200).send({ new_user: false, result: result });
+            }
+        });
+    }
+});
+
 module.exports = router;
