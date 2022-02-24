@@ -25,3 +25,5 @@ router.post('/create', function(req, res){
         res.status(200).json({ new_char: false, result: "Char Role Id Required!"});
     }
 });
+
+module.exports = router;
