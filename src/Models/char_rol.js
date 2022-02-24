@@ -4,6 +4,7 @@ var char_role_schema = new mongoose.Schema({
         type: String,
         required: true,
         index: true,
+        unique: true,
     },
     char_base_stats: {
         attack: Number,
