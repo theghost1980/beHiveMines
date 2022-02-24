@@ -20,7 +20,7 @@ router.post('/login', function(req,res){
     console.log("username: ", username);
     user.findOne({ username: username, password: password}, function(err, result){
         if (err){
-            res.status(500).json({ auth: false, error: err });
+            res.status(500).json({ auth: false, result: err });
         };
         if (!result){
             res.status(404).json({ auth: false, result: result });
@@ -38,13 +38,13 @@ router.post('/create_user', function(req,res){
     }else{
         user.findOne({ username: username, password: password}, function(err, result){
             if (err){
-                res.status(500).json({ new_user: false, error: err });
+                res.status(500).json({ new_user: false, result: err });
             };
             if (!result){//create the user
                 //TODO verify if valid email but from website & game, the user will enter only 'email'@''.com. 
                 user.create({ username: username, password: password, email: email, created_at: new Date() }, function(err, resultNew){
                     if (err){
-                        res.status(500).json({ new_user: false, error: err });
+                        res.status(500).json({ new_user: false, result: err });
                     };
                 });
                 res.status(200).json({ new_user: true, result: resultNew });
