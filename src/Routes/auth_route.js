@@ -46,8 +46,8 @@ router.post('/create_user', function(req,res){
                     if (err){
                         res.status(500).json({ new_user: false, result: err });
                     };
+                    res.status(200).json({ new_user: true, result: resultNew });
                 });
-                res.status(200).json({ new_user: true, result: resultNew });
             }else{
                 res.status(404).json({ new_user: false, result: 'User already exists. Please choose a different username.' });
             }
