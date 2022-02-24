@@ -23,7 +23,7 @@ router.post('/login', function(req,res){
             res.status(500).json({ auth: false, result: err });
         };
         if (!result){
-            res.status(404).json({ auth: false, result: result });
+            res.status(200).json({ auth: false, result: result });
         }else{
             res.status(200).json({ auth: true, result: result });
         }
