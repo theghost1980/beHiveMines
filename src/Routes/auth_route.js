@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 const user = require('../Models/user');
+const user_char = require('../Models/user_char');
 
 //configurations for router
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -25,7 +26,15 @@ router.post('/login', function(req,res){
         if (!result){
             res.status(404).json({ auth: false, result: "User not found. Please verify username and password." });
         }else{
-            res.status(200).json({ auth: true, result: result });
+            //look up on user_chars. maybe we could move this to a function later ono
+            var chars = user_char.find({ username: username }, function(err, chars_found){
+                if(err){ return { error: err }};
+                return chars_found;
+            });
+            const data = {
+                user_data: result, chars: chars,
+            };
+            res.status(200).json({ auth: true, result: data });
         }
     });
 });
