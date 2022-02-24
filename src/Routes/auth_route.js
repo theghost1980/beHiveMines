@@ -20,10 +20,10 @@ router.post('/login', function(req,res){
     console.log("username: ", username);
     user.findOne({ username: username, password: password}, function(err, result){
         if (err){
-            res.status(500).json({ auth: false, result: err });
+            res.status(500).json({ auth: false, result: "Please contact support. Internal server error. Take a screenshot.", error: err });
         };
         if (!result){
-            res.status(200).json({ auth: false, result: result });
+            res.status(404).json({ auth: false, result: "User not found. Please verify username and password." });
         }else{
             res.status(200).json({ auth: true, result: result });
         }
@@ -38,7 +38,7 @@ router.post('/create_user', function(req,res){
     }else{
         user.findOne({ username: username, password: password}, function(err, result){
             if (err){
-                res.status(500).json({ new_user: false, result: err });
+                res.status(500).json({ new_user: false, result: "Please contact support. Internal server error. Take a screenshot.", error: err });
             };
             if (!result){//create the user
                 //TODO verify if valid email but from website & game, the user will enter only 'email'@''.com. 
@@ -49,7 +49,7 @@ router.post('/create_user', function(req,res){
                 });
                 res.status(200).json({ new_user: true, result: resultNew });
             }else{
-                res.status(200).json({ new_user: false, result: 'User already exists. Please choose a different username.' });
+                res.status(404).json({ new_user: false, result: 'User already exists. Please choose a different username.' });
             }
         });
     }
