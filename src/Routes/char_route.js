@@ -8,11 +8,10 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 //end config
 
-router.get('/search', function(req,res){
+router.post('/search', function(req,res){
     const { query } = req.body; //query = { "query": {}, "limit": 0, "sort_by": "" }
-    console.log(" raw query: ", query);
+    //TODO limit & sort_by
     const _query = query["query"];
-    console.log("_query: ", _query);
     char.find({ ..._query }, function(err, result){
         if (err){ res.status(500).json({ search: false, result: "Please contact support. Error information.", error: err })};
         res.status(200).json({ search: true, result: result });
