@@ -8,6 +8,15 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 //end config
 
+router.get('/search', function(req,res){
+    const { query } = req.body; //query = { "query": {}, "limit": 0, "sort_by": "" }
+    const _query = query["query"];
+    char.find(_query, function(err, result){
+        if (err){ res.status(500).json({ search: false, result: "Please contact support. Error information.", error: err })};
+        res.status(200).json({ search: true, result: result });
+    }); 
+});
+
 router.post('/create', function(req, res){
     const { char_id, char_base_stats, char_bio, char_anim_name } = req.body;
     if(char_id != "" && char_id != null){
