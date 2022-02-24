@@ -11,7 +11,7 @@ router.use(bodyParser.json());
 router.get('/search', function(req,res){
     const { query } = req.body; //query = { "query": {}, "limit": 0, "sort_by": "" }
     const _query = query["query"];
-    char.find(_query, function(err, result){
+    char.find({ ..._query }, function(err, result){
         if (err){ res.status(500).json({ search: false, result: "Please contact support. Error information.", error: err })};
         res.status(200).json({ search: true, result: result });
     }); 
