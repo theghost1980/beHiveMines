@@ -27,9 +27,10 @@ router.post('/login', function(req,res){
             res.status(404).json({ auth: false, result: "User not found. Please verify username and password." });
         }else{
             //look up on user_chars. maybe we could move this to a function later ono
-            var chars = user_char.find({ username: username }, function(err, chars_found){
-                if(err){ return { error: err }};
-                return chars_found;
+            var chars = null;
+            user_char.find({ username: username }, function(err, chars_found){
+                if(err){ chars = { error: err }}
+                else{ chars = chars_found; };
             });
             const data = {
                 user_data: result, chars: chars,
