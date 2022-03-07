@@ -4,6 +4,12 @@ var game_item_schema = new mongoose.Schema({
         type: Number,
         required: true,
         index: true,
+        unique: true,
+    },
+    item_sybtype: {
+        type: String,
+        required: true,
+        index: true,
     },
     item_type:{
         type: String,
@@ -13,7 +19,8 @@ var game_item_schema = new mongoose.Schema({
     item_name: {
         type: String,
         required: true,
-        default: "Ipsem Lorem Lorem Ipsem Lorem",
+        unique: true,
+        index: true,
     },
     item_rarity: { //common, uncommon, rare, epic, legendary,
         type: String,

@@ -15,6 +15,8 @@ var char_route = require('./src/Routes/char_route');
 app.use(config.charEP, char_route);
 var user_char_route = require('./src/Routes/user_char_route');
 app.use(config.userCharEP, user_char_route);
+var game_item_route = require('./src/Routes/game_item');
+app.use(config.gameItemEP, game_item_route);
 
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
@@ -23,4 +25,5 @@ app.listen(port, () => {
     console.log('Auth: ', config.authEP);
     console.log('Char: ', config.charEP);
     console.log('User Char: ', config.userCharEP);
+    console.log('Game Items: ', config.gameItemEP);
 });
