@@ -19,4 +19,8 @@ app.use(config.userCharEP, user_char_route);
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
     console.log('Backend Server for Hive Mines RPG v1.0');
+    console.log('Routes List.');
+    console.log('Auth: ', config.authEP);
+    console.log('Char: ', config.charEP);
+    console.log('User Char: ', config.userCharEP);
 });
