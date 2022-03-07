@@ -10,6 +10,11 @@ router.use(bodyParser.json());
 
 router.post('/search', function(req,res){
     const { query } = req.body; //query = { "query": {}, "limit": 0, "sort_by": "" }
+    if(query == null || query == ""){
+        return res.status(500).json({
+            search: false, result: "Cannot process empty!"
+        });
+    }
     //TODO limit & sort_by
     const _query = query["query"];
     game_item.find({ ..._query }, function(err, result){
