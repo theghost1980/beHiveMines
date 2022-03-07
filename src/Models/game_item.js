@@ -1,43 +1,44 @@
 var mongoose = require('mongoose');
 var game_item_schema = new mongoose.Schema({
-    item_id:{ //so 0 will be reserved
+    id:{ 
         type: Number,
         required: true,
         index: true,
         unique: true,
     },
-    item_sybtype: {
+    type:{
         type: String,
         required: true,
         index: true,
     },
-    item_type:{
+    subtype: {
         type: String,
         required: true,
         index: true,
     },
-    item_name: {
+    equipmentslot: {
+        type: String,
+        default: null,
+    },
+    rarity: { //common, uncommon, rare, epic, legendary,
+        type: String,
+        required: true,
+    },
+    stackable: Boolean,
+    quantity: Number,
+    name: {
         type: String,
         required: true,
         unique: true,
         index: true,
     },
-    item_rarity: { //common, uncommon, rare, epic, legendary,
-        type: String,
-        required: true,
+    addprop: Boolean,
+    propname: String, // attack, defesnse, etc.
+    proptype: String, //boolean, int, float.
+    propvalue: {
+        type: Number,
+        default: null,
     },
-    item_add_props: Boolean,
-    item_props: [
-        {
-            prop_name: String, // attack, defesnse, etc.
-        },
-        {
-            prop_type: String, //boolean, int, float.
-        },
-        {
-            prop_value: String,
-        }
-    ],
 });
 mongoose.model('game_item', game_item_schema);
 
