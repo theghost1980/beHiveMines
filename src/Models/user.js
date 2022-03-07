@@ -18,10 +18,10 @@ var user_schema = new mongoose.Schema({
     ban_reason: String,
     full_name: String,
     avatar: String,
-    email: {
+    email: { //for now email is not unique so a user can use same email for now
         type: String,
-        unique: true,
         index: true,
+        required: true,
         verified:{
             type: Boolean,
             default: false,

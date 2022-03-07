@@ -64,8 +64,8 @@ var user_char_schema = new mongoose.Schema({
         fishing_level: Number,
         fishing_exp: Number, 
     },
-    char_inventory: {type: Array}, //they will be assigned from the game on first run
-    char_truck: { type: Array }, //idem
+    char_inventory: { type: Object }, //they will be assigned from the game on first run
+    char_truck: { type: Object }, //idem
     pickaxe_generated: {
         type: Boolean,
         default: false,

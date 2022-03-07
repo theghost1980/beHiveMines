@@ -43,8 +43,8 @@ router.post('/login', function(req,res){
 router.post('/create_user', function(req,res){
     const { username, password, email} = req.body;
     console.log(req.body);
-    if (username == null || password == null || username == "" || password == ""){
-        res.status(403).json({ auth: false, error: 'Please provide username and password.'});
+    if (username == null || password == null || email == null || username == "" || password == "" || email == ""){
+        res.status(403).json({ auth: false, error: 'Please provide username, password and email.'});
     }else{
         user.findOne({ username: username }, function(err, result){
             if (err){
