@@ -10,7 +10,10 @@ var user_char_schema = new mongoose.Schema({
         index: true,
         required: true,
     },
-    active: Boolean, //active or inactive
+    active: {
+        type: Boolean,
+        default: true,
+    }, //active or inactive
     char_name: String,
     char_equip: {
         main_hand: {
@@ -42,8 +45,14 @@ var user_char_schema = new mongoose.Schema({
         health: Number,
         energy: Number,
         position:{
-            x: Number,
-            y: Number,
+            x: {
+                type: Number,
+                default: 0,
+            },
+            y: {
+                type: Number,
+                default: 0,
+            },
         },
         located_at_scene: String,
         defense: Number,
@@ -57,6 +66,11 @@ var user_char_schema = new mongoose.Schema({
     },
     char_inventory: {type: Array}, //they will be assigned from the game on first run
     char_truck: { type: Array }, //idem
+    pickaxe_generated: {
+        type: Boolean,
+        default: false,
+    },
+    created_at: Date,
 });
 mongoose.model('user_char', user_char_schema);
 

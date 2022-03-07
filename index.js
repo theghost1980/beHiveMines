@@ -13,6 +13,8 @@ var auth_route = require('./src/Routes/auth_route');
 app.use(config.authEP, auth_route);
 var char_route = require('./src/Routes/char_route');
 app.use(config.charEP, char_route);
+var user_char_route = require('./src/Routes/user_char_route');
+app.use(config.userCharEP, user_char_route);
 
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
