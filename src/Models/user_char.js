@@ -54,7 +54,10 @@ var user_char_schema = new mongoose.Schema({
                 default: 0,
             },
         },
-        located_at_scene: String,
+        located_at_scene: {
+            type: String,
+            default: "SunnyMap",
+        },
         defense: Number,
         attack: Number,
         mining: Number,
@@ -71,7 +74,7 @@ var user_char_schema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    created_at: Date,
+    created_at: Number, //so we can use ts unix
 });
 mongoose.model('user_char', user_char_schema);
 

@@ -20,7 +20,7 @@ router.post('/create_char', function(req,res){
             new_user_char: false, result: "Fields needed, please check!"
         });
     }
-    user_char.create({ username: username, char_id: char_id, char_name: char_name, char_stats: char_stats, char_inventory: char_inventory, char_truck: char_truck, char_anim_name: char_anim_name, created_at: new Date() }, function(err, new_user_char){
+    user_char.create({ username: username, char_id: char_id, char_name: char_name, char_stats: char_stats, char_inventory: char_inventory, char_truck: char_truck, char_anim_name: char_anim_name, created_at: Date.now() }, function(err, new_user_char){
         if (err){ 
             res.status(500).json({ new_user_char: false, result: "Please contact support. Error information.", error: err });
         }
