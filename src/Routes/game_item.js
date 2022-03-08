@@ -17,6 +17,7 @@ router.post('/search', function(req,res){
     }
     //TODO limit & sort_by
     const _query = query["query"];
+    console.log('query: ', _query);
     game_item.find({ ..._query }, function(err, result){
         if (err){ 
             res.status(500).json({ search: false, result: "Please contact support. Error information.", error: err })
