@@ -14,13 +14,13 @@ router.use(bodyParser.json());
 
 //C create a new user_char
 router.post('/create_char', function(req,res){
-    const { username, char_id, char_name, char_stats, char_inventory, char_truck } = req.body;
-    if(username == null || username == "" || char_id == null || char_id == "" || char_name == null || char_name == "" || char_stats == null || char_stats == "" || char_inventory == null || char_inventory == ""){
+    const { username, char_id, char_name, char_stats, char_inventory, char_truck, char_anim_name } = req.body;
+    if(username == null || username == "" || char_id == null || char_id == "" || char_name == null || char_name == "" || char_stats == null || char_stats == "" || char_inventory == null || char_inventory == "" || char_anim_name == null || char_anim_name == ""){
         return res.status(200).json({
             new_user_char: false, result: "Fields needed, please check!"
         });
     }
-    user_char.create({ username: username, char_id: char_id, char_name: char_name, char_stats: char_stats, char_inventory: char_inventory, char_truck: char_truck, created_at: new Date() }, function(err, new_user_char){
+    user_char.create({ username: username, char_id: char_id, char_name: char_name, char_stats: char_stats, char_inventory: char_inventory, char_truck: char_truck, char_anim_name: char_anim_name, created_at: new Date() }, function(err, new_user_char){
         if (err){ 
             res.status(500).json({ new_user_char: false, result: "Please contact support. Error information.", error: err });
         }
