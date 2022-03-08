@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var game_item_schema = new mongoose.Schema({
-    id:{ 
+    iditem:{ 
         type: Number,
         required: true,
         index: true,
