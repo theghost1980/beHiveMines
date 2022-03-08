@@ -18,7 +18,7 @@ router.post('/search', function(req,res){
     }
     try {
         var _query = JSON.parse(query);
-        console.log('Parsed query: ', _query);
+        //console.log('Parsed query: ', _query);
         game_item.find({ ..._query }, function(err, result){
             if (err){ 
                 res.status(500).json({ search: false, result: "Please contact support. Error information.", error: err })
