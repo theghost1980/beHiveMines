@@ -12,7 +12,7 @@ router.post('/search', function(req,res){
     //TODO ADD { limit, sortby }
     console.log(req.headers);
     console.log(req.body);
-    if(req.body == null || req.body == {}){
+    if(req.headers['content-length'] == '0'){
         return res.status(500).json({
             search: false, result: "Cannot process empty!"
         });
