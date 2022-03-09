@@ -10,6 +10,8 @@ router.use(bodyParser.json());
 
 router.post('/search', function(req,res){
     //TODO ADD { limit, sortby }
+    console.log(req.headers);
+    console.log(req.body);
     const { query } = req.body; //query = {"field": "value||expression"}
     if(query == null || query == ""){
         return res.status(500).json({
