@@ -11,13 +11,14 @@ router.use(bodyParser.json());
 router.post('/search', function(req,res){
     //TODO ADD { limit, sortby }
     const { query } = req.body; //query = {"field": "value||expression"}
-    console.log('query: ', query);
     if(query == null || query == ""){
         return res.status(500).json({
             search: false, result: "Cannot process empty!"
         });
     }
-    game_item.find(...query, function(err, result){
+    console.log('query: ', query);
+    console.log('Pquery: ', JSON.parse(query));
+    game_item.find({...query}, function(err, result){
         if (err){ 
             res.status(500).json({ search: false, result: "Please contact support. Error information.", error: err })
         }else{
