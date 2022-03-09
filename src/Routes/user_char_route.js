@@ -36,6 +36,7 @@ router.post('/update_char',function(req,res){
         return res.status(500).json({ update_char: false, result: "Empty Params!"});
     }else{
         const { username, char_id } = req.headers;
+        console.log(req.headers);
         if(username == null || username == "" || char_id == null || char_id == ""){
             return res.status(500).json({ update_char: false, result: "Empty Record!"});
         }else{
