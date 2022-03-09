@@ -30,4 +30,28 @@ router.post('/create_char', function(req,res){
     });
 });
 
+//U update a user_char
+router.post('/update_char',function(req,res){
+    if (req.headers['content-length'] == '0'){
+        return res.status(500).json({ update_char: false, result: "Empty Params!"});
+    }else{
+        const { username, char_id } = req.headers;
+        if(username == null || username == "" || char_id == null || char_id == ""){
+            return res.status(500).json({ update_char: false, result: "Empty Record!"});
+        }else{
+            user_char.findOneAndUpdate({ username: username, char_id: char_id }, req.body, { returnNewDocument: true }, function(err, updated){
+                if(err){
+                    res.status(500).json({
+                        update_char: false, result: "Error processing the update. Please contact support. Error info.", error: err,
+                    });
+                }else{
+                    res.status(200).json({
+                        update_char: true, result: "Updated", updated: updated,
+                    })
+                }
+            });
+        }
+    }
+});
+
 module.exports = router;
