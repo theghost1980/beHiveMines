@@ -11,6 +11,7 @@ router.use(bodyParser.json());
 router.post('/search', function(req,res){
     //TODO ADD { limit, sortby }
     const { query } = req.body; //query = {"field": "value||expression"}
+    console.log('Raw query: ', query);
     if(query == null || query == ""){
         return res.status(500).json({
             search: false, result: "Cannot process empty!"
