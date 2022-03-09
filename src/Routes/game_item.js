@@ -17,8 +17,8 @@ router.post('/search', function(req,res){
         });
     }
     console.log('query: ', query);
-    var pQuery = JSON.parse(query);
-    console.log('Pquery: ', JSON.parse(pQuery));
+    const pQuery = JSON.parse(query);
+    console.log('Pquery: ', pQuery);
     game_item.find({...pQuery}, function(err, result){
         if (err){ 
             res.status(500).json({ search: false, result: "Please contact support. Error information.", error: err })
