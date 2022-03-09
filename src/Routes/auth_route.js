@@ -15,8 +15,9 @@ router.get('/status', function(req, res){
 
 router.post('/login', function(req,res){
     //TODO JWT token check as a function so we can use it anywhere. returns auth = true or false
-    const { username, password } = req.body;
+    console.log(req.headers);
     console.log(req.body);
+    const { username, password } = req.body;
     // console.log("password: ", password);
     // console.log("username: ", username);
     user.findOne({ username: username, password: password}, function(err, result){
