@@ -12,16 +12,12 @@ router.post('/search', function(req,res){
     //TODO ADD { limit, sortby }
     console.log(req.headers);
     console.log(req.body);
-    const { query } = req.body; //query = {"field": "value||expression"}
-    if(query == null || query == ""){
+    if(req.body == null || req.body == ""){
         return res.status(500).json({
             search: false, result: "Cannot process empty!"
         });
     }
-    console.log('query: ', query);
-    const pQuery = JSON.parse(query);
-    console.log('Pquery: ', pQuery);
-    game_item.find({...pQuery}, function(err, result){
+    game_item.find({...req.body}, function(err, result){
         if (err){ 
             res.status(500).json({ search: false, result: "Please contact support. Error information.", error: err })
         }else{
