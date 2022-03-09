@@ -39,6 +39,7 @@ router.post('/update_char',function(req,res){
         if(username == null || username == "" || char_id == null || char_id == ""){
             return res.status(500).json({ update_char: false, result: "Empty Record!"});
         }else{
+            console.log(req.body);
             user_char.findOneAndUpdate({ username: username, char_id: char_id }, req.body, { returnNewDocument: true }, function(err, updated){
                 if(err){
                     res.status(500).json({
