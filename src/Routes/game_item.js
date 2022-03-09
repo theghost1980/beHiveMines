@@ -16,7 +16,7 @@ router.post('/search', function(req,res){
         return res.status(500).json({
             search: false, result: "Cannot process empty!"
         });
-    }
+    } 
     game_item.find({...req.body}, function(err, result){
         if (err){ 
             res.status(500).json({ search: false, result: "Please contact support. Error information.", error: err })
