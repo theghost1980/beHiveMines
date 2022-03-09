@@ -41,8 +41,7 @@ router.post('/update_char',function(req,res){
             return res.status(500).json({ update_char: false, result: "Empty Record!"});
         }else{
             console.log(req.body);
-            
-            /* user_char.findOneAndUpdate({ username: username, char_id: char_id }, req.body, { returnOriginal: false }, function(err, updated){
+            user_char.findOneAndUpdate({ username: username, char_id: char_id }, req.body, { returnOriginal: false }, function(err, updated){
                 if(err){
                     res.status(500).json({
                         update_char: false, result: "Error processing the update. Please contact support. Error info.", error: err,
@@ -52,7 +51,7 @@ router.post('/update_char',function(req,res){
                         update_char: true, result: "Updated", updated: updated,
                     })
                 }
-            }); */
+            });
         }
     }
 });
